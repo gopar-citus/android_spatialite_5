@@ -1,0 +1,28 @@
+package org.spatialite.sqlcipher;
+
+import android.database.Cursor;
+
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+
+import static junit.framework.Assert.assertEquals;
+
+@RunWith(AndroidJUnit4.class)
+public class ICUTest extends BaseTest {
+    @Test
+    public void icu() {
+        String expected = "КАКОЙ-ТО КИРИЛЛИЧЕСКИЙ ТЕКСТ"; // SOME Cyrillic TEXT
+        String actual = "";
+
+        Cursor result = database.rawQuery("select UPPER('Какой-то кириллический текст') as u1", new String[]{});
+        if (result != null) {
+            result.moveToFirst();
+            actual = result.getString(0);
+            result.close();
+        }
+        assertEquals(expected, actual);
+    }
+}
