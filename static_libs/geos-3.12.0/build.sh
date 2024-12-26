@@ -23,9 +23,8 @@ cmake \
     -DCMAKE_ANDROID_STL_TYPE=c++_static \
     -DCMAKE_C_FLAGS="$AND_CFLAGS" \
     -DCMAKE_CXX_FLAGS="$AND_CXXFLAGS" \
-    -DUSE_UNSTABLE_GEOS_CPP_API=OFF \
-    .. 
-    
-make clean && cmake --build . && make install && 
-{ cp -f -v "$BUILD_DIR/lib/"*.a "$JNI_LIB_ABI_DIR" || exit_with_message "cannot cp lib" && 
+    ..
+
+make clean && cmake --build . && make install &&
+{ cp -f -v "$BUILD_DIR/lib/"*.a "$JNI_LIB_ABI_DIR" || exit_with_message "cannot cp lib" &&
 cp -f -v -R "$BUILD_DIR/include" "$JNI_DIR/geos" || exit_with_message "cannot cp include"; }

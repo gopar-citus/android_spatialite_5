@@ -18904,7 +18904,7 @@ for ac_lib in '' geos_c; do
     ac_res="none required"
   else
     ac_res=-l$ac_lib
-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+    LIBS="-l$ac_lib -lgeos $ac_func_search_save_LIBS"
   fi
   if ac_fn_c_try_link "$LINENO"; then :
   ac_cv_search_GEOSCoveredBy=$ac_res
@@ -18934,7 +18934,7 @@ else
 fi
 
   LIBS="$LIBS_SAVE"
-  LIBS="$LIBS $GEOS_LDFLAGS -lgeos_c"
+  LIBS="$LIBS $GEOS_LDFLAGS -lgeos_c -lgeos"
 
   #-----------------------------------------------------------------------
   #   --enable-controlpoints
@@ -18991,7 +18991,7 @@ for ac_lib in '' geos_c; do
     ac_res="none required"
   else
     ac_res=-l$ac_lib
-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+    LIBS="-l$ac_lib -lgeos $ac_func_search_save_LIBS"
   fi
   if ac_fn_c_try_link "$LINENO"; then :
   ac_cv_search_GEOSDelaunayTriangulation=$ac_res
@@ -19064,7 +19064,7 @@ for ac_lib in '' geos_c; do
     ac_res="none required"
   else
     ac_res=-l$ac_lib
-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+    LIBS="-l$ac_lib -lgeos $ac_func_search_save_LIBS"
   fi
   if ac_fn_c_try_link "$LINENO"; then :
   ac_cv_search_GEOSContext_setErrorMessageHandler_r=$ac_res
@@ -19153,7 +19153,7 @@ for ac_lib in '' geos_c; do
     ac_res="none required"
   else
     ac_res=-l$ac_lib
-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+    LIBS="-l$ac_lib -lgeos $ac_func_search_save_LIBS"
   fi
   if ac_fn_c_try_link "$LINENO"; then :
   ac_cv_search_GEOSFrechetDistance_r=$ac_res
@@ -19226,7 +19226,7 @@ for ac_lib in '' geos_c; do
     ac_res="none required"
   else
     ac_res=-l$ac_lib
-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+    LIBS="-l$ac_lib -lgeos $ac_func_search_save_LIBS"
   fi
   if ac_fn_c_try_link "$LINENO"; then :
   ac_cv_search_GEOSConstrainedDelaunayTriangulation_r=$ac_res
@@ -19299,7 +19299,7 @@ for ac_lib in '' geos_c; do
     ac_res="none required"
   else
     ac_res=-l$ac_lib
-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+    LIBS="-l$ac_lib -lgeos $ac_func_search_save_LIBS"
   fi
   if ac_fn_c_try_link "$LINENO"; then :
   ac_cv_search_GEOSHilbertCode=$ac_res
@@ -19386,7 +19386,7 @@ for ac_lib in '' rttopo; do
     ac_res="none required"
   else
     ac_res=-l$ac_lib
-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+    LIBS="-l$ac_lib -lgeos $ac_func_search_save_LIBS"
   fi
   if ac_fn_c_try_link "$LINENO"; then :
   ac_cv_search_rtt_AddLineNoFace=$ac_res

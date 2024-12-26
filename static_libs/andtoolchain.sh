@@ -46,9 +46,9 @@ esac
 export TOOLCHAIN="$NDK_HOME/toolchains/llvm/prebuilt/$UNAME_S-x86_64"
 export AR="$TOOLCHAIN/bin/llvm-ar"
 export CC="$TOOLCHAIN/bin/$TARGET$API-clang"
-export AS="$CC"
+export AS="$TOOLCHAIN/bin/llvm-as"
 export CXX="$TOOLCHAIN/bin/$TARGET$API-clang++"
-export LD="$TOOLCHAIN/bin/ld"
+export LD="$TOOLCHAIN/bin/$TARGET-ld"
 export RANLIB="$TOOLCHAIN/bin/llvm-ranlib"
 export STRIP="$TOOLCHAIN/bin/llvm-strip"
 export CFLAGS=$AND_CFLAGS

@@ -7,7 +7,7 @@ source "$BUILD_UTILS_SH" || {
 }
 
 [ -z "$NDK_HOME" ] && exit_with_message "Error: NDK_HOME environment variable is not set."
-[ -z "$PROJECT_ROOT" ] && exit_with_message "Error: NDK_HOME environment variable is not set."
+[ -z "$PROJECT_ROOT" ] && exit_with_message "Error: PROJECT_ROOT environment variable is not set."
 
 #and toolchain file path
 export AND_TOOLCHAIN_FILE="$SCRIPT_DIR/andtoolchain.sh"
@@ -68,9 +68,13 @@ scripts=(
 
 # Loop over each architecture
 for arch in "${archs[@]}"; do
+#for i in 0 1 2; do
+
   echo "Processing architecture: $arch"
+  #echo "Processing architecture: ${archs[$i]}  $i"
 
   # Needed by most scripts
+  #export TARGET_ARCH_ABI="${archs[$i]}"
   export TARGET_ARCH_ABI="$arch"
   export JNI_LIB_ABI_DIR="$APROJ_MAIN_DIR/jniLibs/$TARGET_ARCH_ABI"
   mkdir -p "$JNI_LIB_ABI_DIR"

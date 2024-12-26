@@ -28,11 +28,12 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
-    ndkVersion = "23.1.7779620"
+    //ndkVersion = "23.1.7779620"
+    ndkVersion = "21.4.7075529"
     sourceSets {
         getByName("main") {
             jniLibs.srcDir("src/main/jniLibs")
@@ -57,10 +58,10 @@ android {
 
 tasks.register<Exec>("buildStaticLibs") {
     workingDir("${project.rootDir}/static_libs")
-    commandLine("./masterbuild.sh")
     environment("NDK_HOME", project.extensions.getByType<com.android.build.gradle.BaseExtension>().ndkDirectory)
     environment("PROJECT_ROOT", project.rootDir)
-    enabled=false
+    commandLine("./masterbuild.sh")
+    enabled=true
 }
 
 

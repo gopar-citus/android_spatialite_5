@@ -68,7 +68,8 @@ if [[ ! -d "$ICU_INTERMEDIATE_OS_BUILD_DIR" ]]; then
   echo "creating intermediate build in $ICU_INTERMEDIATE_OS_BUILD_DIR"
     mkdir -p "$ICU_INTERMEDIATE_OS_BUILD_DIR"
     cd "$ICU_INTERMEDIATE_OS_BUILD_DIR" || exit_with_message "cannot cd to $ICU_INTERMEDIATE_OS_BUILD_DIR"
-    "${ICU_SRC_DIR}/./runConfigureICU" "$OS" \
+    "${ICU_SRC_DIR}/runConfigureICU" "$OS" \
+        --host="$TARGET" \
         --prefix="$ICU_INTERMEDIATE_OS_BUILD_DIR" \
         --enable-static \
         --enable-shared=no \
@@ -100,7 +101,7 @@ source "$AND_TOOLCHAIN_FILE" || exit_with_message "cannot load andtoolchain";
 
 #build
 echo "building android icu $TARGET"
- "${ICU_SRC_DIR}/./runConfigureICU" Linux \
+ "${ICU_SRC_DIR}/runConfigureICU" Linux \
   --host="$TARGET" \
   --prefix="$ICU_AND_ARCH_BUILD_DIR" \
   --with-cross-build="$ICU_INTERMEDIATE_OS_BUILD_DIR" \

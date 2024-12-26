@@ -51,8 +51,28 @@ BUILD_DIR="$SCRIPT_DIR/build"
 cd "$SCRIPT_DIR" ||  exit_with_message "cannot cd to $SCRIPT_DIR";
 rm -rf "$BUILD_DIR" || exit_with_message "cannot cleanup build dir";
 mkdir -pv "$BUILD_DIR"  || exit_with_message "cannot make dirs";
+echo "Building $BUILD_DIR for $TARGET_ARCH_ABI"
 
-LDFLAGS="$LIB_DIRS -lgeos -liconv -lrttopo -lproj -lsqlite3 -licudata -licui18n -licuuc -lstdc++ -lm" \
+case $TARGET_ARCH_ABI in
+  "armeabi-v7a")
+    TARGET="armv7a-linux-androideabi"
+    ;;
+  "arm64-v8a")
+    TARGET="arm-64-linux"
+    ;;
+  "x86")
+    TARGET="i686-linux-android"
+    ;;
+  "x86_64")
+    TARGET="x86_64-linux-android"
+    ;;
+  *)
+    exit_with_message "Unsupported TARGET_ARCH_ABI: '$TARGET_ARCH_ABI'"
+    ;;
+esac
+GEOS_LDFLAGS="-lgeos_c -lgeos" \
+CPPFLAGS="$INCLUDE_DIRS" \
+LDFLAGS="$LIB_DIRS -liconv -lrttopo -lproj -lsqlite3 -licui18n -licuuc -licudata -lstdc++ -lm" \
 CFLAGS="$INCLUDE_DIRS $CFLAGS" \
 ./configure \
     --prefix="$BUILD_DIR" \
