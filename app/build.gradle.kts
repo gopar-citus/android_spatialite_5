@@ -61,7 +61,7 @@ tasks.register<Exec>("buildStaticLibs") {
     environment("NDK_HOME", project.extensions.getByType<com.android.build.gradle.BaseExtension>().ndkDirectory)
     environment("PROJECT_ROOT", project.rootDir)
     commandLine("./masterbuild.sh")
-    enabled=true
+    enabled=false
 }
 
 
